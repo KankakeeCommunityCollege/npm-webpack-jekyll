@@ -1,8 +1,15 @@
-# Git Ignore file
-## Apple stuffs:
-.DS_Store
-
-## NPM stuffs:
+# Git ignore files
+## NPM stuffs
 package-lock.json
 node_modules/
 
+## Apple stuffs
+.DS_Store
+
+## Jekyll stuffs
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+Gemfile.lock

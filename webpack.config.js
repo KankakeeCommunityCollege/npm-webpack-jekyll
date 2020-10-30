@@ -3,14 +3,30 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './assets/js/index.js',
-  mode: 'development',
+  entry: './src/js/index.js',
+  watch: true,
   output: {
-    filename: 'js/bundle.js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, '_pages/assets'),
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: [
+          path.resolve(__dirname, 'node_modules')
+        ],
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader',
+        options: {
+          exposes: ['$', 'jQuery', 'jquery']
+        }
+      },
       {
         test: /\.scss$/,
         use: [
